@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Заголовок таблицы -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Список продуктов"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <!-- ScrollView для прокрутки TableLayout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- TableLayout для отображения списка продуктов -->
+        <TableLayout
+            android:id="@+id/tableLayoutProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="2">
+
+            <!-- Заголовки столбцов -->
+            <TableRow>
+                <TextView
+                    android:text="ID"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="Название"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="Цена"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="Изображение"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>
