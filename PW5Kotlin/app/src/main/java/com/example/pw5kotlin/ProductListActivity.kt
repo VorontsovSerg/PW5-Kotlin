@@ -29,7 +29,6 @@ class ProductListActivity : AppCompatActivity() {
                 // Очистка таблицы, если она уже заполнена
                 tableLayout.removeViews(1, tableLayout.childCount - 1)
 
-                // Добавляем каждую строку продукта в таблицу
                 for (product in products) {
                     val row = TableRow(this)
                     row.layoutParams = ViewGroup.LayoutParams(
@@ -37,19 +36,17 @@ class ProductListActivity : AppCompatActivity() {
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
 
-                    // Создаем ячейки для ID, Названия и Цены
                     val idTextView = createTextView(product.id.toString(), 0.1f, Gravity.CENTER)
                     val titleTextView = createTextView(product.title, 0.5f, Gravity.START) // Увеличили вес и выровняли текст по левому краю
                     val priceTextView = createTextView("${product.price}", 0.2f, Gravity.CENTER)
 
-                    // Создаем ImageView для отображения изображения продукта
                     val imageView = ImageView(this).apply {
                         layoutParams = TableRow.LayoutParams(
                             150,  // Ширина изображения
                             150,  // Высота изображения
                             0.2f
                         ).apply {
-                            gravity = Gravity.CENTER // Центрируем изображение в ячейке
+                            gravity = Gravity.CENTER
                         }
                         scaleType = ImageView.ScaleType.FIT_CENTER // Масштабируем изображение в пределах ячейки
                     }
@@ -61,13 +58,11 @@ class ProductListActivity : AppCompatActivity() {
                         .error(R.drawable.error_image) // Изображение при ошибке
                         .into(imageView)
 
-                    // Добавляем ячейки и изображение в строку
                     row.addView(idTextView)
                     row.addView(titleTextView)
                     row.addView(priceTextView)
                     row.addView(imageView)
 
-                    // Добавляем строку в TableLayout
                     tableLayout.addView(row)
                 }
             }
@@ -79,7 +74,7 @@ class ProductListActivity : AppCompatActivity() {
         return TextView(this).apply {
             this.text = text
             this.setPadding(8, 8, 8, 8)
-            this.gravity = gravity // Задаем выравнивание текста в ячейке
+            this.gravity = gravity
             this.layoutParams = TableRow.LayoutParams(
                 0, // Используем вес для ширины
                 TableRow.LayoutParams.WRAP_CONTENT,

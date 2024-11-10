@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.pw5kotlin.data.ProductDao
 import com.example.pw5kotlin.data.ProductEntity
 
-@Database(entities = [ProductEntity::class], version = 2) // Обновлено до версии 2
+@Database(entities = [ProductEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun productDao(): ProductDao
@@ -25,17 +25,15 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "product_database"
                 )
-                    .addMigrations(MIGRATION_1_2) // Добавление миграции
+                    .addMigrations(MIGRATION_1_2)
                     .build()
                 INSTANCE = instance
                 instance
             }
         }
 
-        // Миграция с версии 1 на версию 2: изменение типа столбца и добавление нового поля
         private val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                // Шаг 1: Создание новой таблицы с обновленной схемой
                 database.execSQL("""
                     CREATE TABLE products_new (
                         id INTEGER PRIMARY KEY NOT NULL,
@@ -52,7 +50,6 @@ abstract class AppDatabase : RoomDatabase() {
                     )
                 """.trimIndent())
 
-                // Шаг 2: Копирование данных из старой таблицы в новую
                 database.execSQL("""
                     INSERT INTO products_new (id, title, description, price, discountPercentage, rating, stock, brand, category, thumbnail, discountAmount)
                     SELECT id, title, description, price, discountPercentage, rating, stock, brand, category, thumbnail, 0.0

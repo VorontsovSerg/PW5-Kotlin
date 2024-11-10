@@ -12,7 +12,7 @@ interface ProductDao {
     suspend fun insertProduct(product: ProductEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(products: List<ProductEntity>) // Новый метод для вставки списка продуктов
+    suspend fun insertAll(products: List<ProductEntity>)
 
     @Query("SELECT * FROM products")
     fun getAllProducts(): LiveData<List<ProductEntity>>

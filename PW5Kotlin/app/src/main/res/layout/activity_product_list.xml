@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Заголовок таблицы -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,19 +13,16 @@
         android:textStyle="bold"
         android:paddingBottom="8dp"/>
 
-    <!-- ScrollView для прокрутки TableLayout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- TableLayout для отображения списка продуктов -->
         <TableLayout
             android:id="@+id/tableLayoutProducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:stretchColumns="2">
 
-            <!-- Заголовки столбцов -->
             <TableRow>
                 <TextView
                     android:text="ID"

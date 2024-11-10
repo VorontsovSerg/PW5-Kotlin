@@ -19,8 +19,6 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         repository = ProductRepository(productDao, RetrofitInstance.api)
         allProducts = repository.allProducts
     }
-
-    // Метод для загрузки всех продуктов
     fun fetchAllProducts() = viewModelScope.launch {
         repository.fetchAllProducts()
     }

@@ -12,7 +12,7 @@ class ProductRepository(private val productDao: ProductDao, private val productA
     // Метод для загрузки всех продуктов из обертки ProductResponse
     suspend fun fetchAllProducts() {
         val response = withContext(Dispatchers.IO) { productApi.getAllProducts() }
-        val productEntities = response.products.map { ProductEntity.fromProduct(it) } // Достаем продукты из ответа
-        productDao.insertAll(productEntities) // Сохраняем все продукты в базе данных
+        val productEntities = response.products.map { ProductEntity.fromProduct(it) }
+        productDao.insertAll(productEntities)
     }
 }

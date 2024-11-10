@@ -5,14 +5,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Кнопка для загрузки данных -->
     <Button
         android:id="@+id/buttonFetchData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Загрузить данные" />
 
-    <!-- Кнопка для перехода к списку продуктов -->
     <Button
         android:id="@+id/buttonShowList"
         android:layout_width="wrap_content"

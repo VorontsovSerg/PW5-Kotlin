@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         buttonFetchData.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    productViewModel.fetchAllProducts() // Загружаем все продукты
+                    productViewModel.fetchAllProducts()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
