@@ -9,7 +9,6 @@ class ProductRepository(private val productDao: ProductDao, private val productA
 
     val allProducts: LiveData<List<ProductEntity>> = productDao.getAllProducts()
 
-    // Метод для загрузки всех продуктов из обертки ProductResponse
     suspend fun fetchAllProducts() {
         val response = withContext(Dispatchers.IO) { productApi.getAllProducts() }
         val productEntities = response.products.map { ProductEntity.fromProduct(it) }

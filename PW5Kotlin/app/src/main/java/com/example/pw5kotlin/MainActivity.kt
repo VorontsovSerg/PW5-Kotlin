@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         val buttonFetchData = findViewById<Button>(R.id.buttonFetchData)
         val buttonShowList = findViewById<Button>(R.id.buttonShowList)
 
-        // Кнопка для загрузки всех данных из API и сохранения их в базе данных
         buttonFetchData.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Кнопка для перехода ко второй активности для отображения списка продуктов
         buttonShowList.setOnClickListener {
             val intent = Intent(this, ProductListActivity::class.java)
             startActivity(intent)

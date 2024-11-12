@@ -26,7 +26,6 @@ class ProductListActivity : AppCompatActivity() {
         // Наблюдаем за изменениями в базе данных и обновляем таблицу
         productViewModel.allProducts.observe(this, Observer { products ->
             if (products != null) {
-                // Очистка таблицы, если она уже заполнена
                 tableLayout.removeViews(1, tableLayout.childCount - 1)
 
                 for (product in products) {
@@ -37,25 +36,25 @@ class ProductListActivity : AppCompatActivity() {
                     )
 
                     val idTextView = createTextView(product.id.toString(), 0.1f, Gravity.CENTER)
-                    val titleTextView = createTextView(product.title, 0.5f, Gravity.START) // Увеличили вес и выровняли текст по левому краю
+                    val titleTextView = createTextView(product.title, 0.5f, Gravity.START)
                     val priceTextView = createTextView("${product.price}", 0.2f, Gravity.CENTER)
 
                     val imageView = ImageView(this).apply {
                         layoutParams = TableRow.LayoutParams(
-                            150,  // Ширина изображения
-                            150,  // Высота изображения
+                            150,
+                            150,
                             0.2f
                         ).apply {
                             gravity = Gravity.CENTER
                         }
-                        scaleType = ImageView.ScaleType.FIT_CENTER // Масштабируем изображение в пределах ячейки
+                        scaleType = ImageView.ScaleType.FIT_CENTER
                     }
 
                     // Загружаем изображение с помощью Glide
                     Glide.with(this)
-                        .load(product.thumbnail) // URL изображения
-                        .placeholder(R.drawable.placeholder_image) // Плейсхолдер
-                        .error(R.drawable.error_image) // Изображение при ошибке
+                        .load(product.thumbnail)
+                        .placeholder(R.drawable.placeholder_image)
+                        .error(R.drawable.error_image)
                         .into(imageView)
 
                     row.addView(idTextView)
